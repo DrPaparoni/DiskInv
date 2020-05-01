@@ -19,16 +19,5 @@ namespace DiskInv
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                lblmessage.Text = txtFirst.Text + " " + txtLast.Text + " is added to the database.";
-                txtFirst.Text = "";
-                txtLast.Text = "";
-                txtPhone.Text = "";
-            }
-        }
     }
 }

@@ -100,3 +100,4 @@ C:\Users\ewalter.SWDV\Documents\DiskInv\DiskInv\obj\Release\DiskInv.csproj.CoreC
 C:\Users\ewalter.SWDV\Documents\DiskInv\DiskInv\obj\Release\DiskInv.csproj.CopyComplete
 C:\Users\ewalter.SWDV\Documents\DiskInv\DiskInv\obj\Release\DiskInv.dll
 C:\Users\ewalter.SWDV\Documents\DiskInv\DiskInv\obj\Release\DiskInv.pdb
+C:\Users\ewalter.SWDV\Documents\DiskInv\DiskInv\obj\Release\DiskInv.csprojAssemblyReference.cache
