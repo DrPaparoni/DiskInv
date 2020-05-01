@@ -6,6 +6,7 @@
 /*  3/5/2020	Eric Walter		added insert statements to all tables.*/
 /*  3/12/2020	Eric Walter		added reports about cd status       */
 /*  4/8/2020	Eric Walter		Added stored procs for Project 5    */
+/*  5/1/2020	Eric Walter		Altered stored procs to work with website    */
 /********************************************************************/
 
 USE master;
@@ -417,7 +418,7 @@ GO
 DROP PROCEDURE IF EXISTS sp_ins_borrower;
 go
 CREATE PROCEDURE sp_ins_borrower
-	@borrower_id int, @fname varchar(60), @lname varchar(60), @phone_num varchar(50)
+	@borrower_id int, @fname varchar(60), @lname varchar(60), @Borrower_Phone_Number varchar(50)
 AS
 	BEGIN TRY
 		INSERT INTO [dbo].[Borrower]
@@ -425,7 +426,7 @@ AS
 				   ,[fname]
 				   ,[lname],[Borrower_Phone_Number])
 			 VALUES
-				   (@borrower_id,@fname,@lname,@phone_num)
+				   (@borrower_id,@fname,@lname,@Borrower_Phone_Number)
 
 	END TRY
 	BEGIN CATCH
@@ -441,11 +442,11 @@ GO
 DROP PROCEDURE IF EXISTS sp_upd_borrower;
 go
 CREATE PROCEDURE sp_upd_borrower
-	@borrower_id int, @fname varchar(60), @lname varchar(60), @phone_num varchar(50)
+	@borrower_id int, @fname varchar(60), @lname varchar(60), @Borrower_Phone_Number varchar(50)
 AS
 	BEGIN TRY
 		UPDATE [dbo].[Borrower]
-		   SET [Borrower_ID] = @borrower_id,[fname] = @fname,[lname] = @lname,[Borrower_Phone_Number] = @phone_num
+		   SET [Borrower_ID] = @borrower_id,[fname] = @fname,[lname] = @lname,[Borrower_Phone_Number] = @Borrower_Phone_Number
 		 WHERE borrower_id = @borrower_id;
 	END TRY
 	BEGIN CATCH
@@ -482,13 +483,13 @@ GO
 DROP PROCEDURE IF EXISTS sp_ins_CD;
 go
 CREATE PROCEDURE sp_ins_CD
-	@cd_id int, @cd_name varchar(60), @release_date date, @genre_id int, @status_id int, @type_id int
+	@cd_id int, @cd_name varchar(60), @release_date date, @genre_id int, @status_id int, @typeid int
 AS
 	BEGIN TRY
 		INSERT INTO [dbo].[CD]
 				   ([CD_ID],[CD_name],[Release_Date],[Genre_ID],[Status_ID],[TypeID])
 			 VALUES
-				   (@cd_id,@cd_name,@release_date,@genre_id,@status_id,@type_id)
+				   (@cd_id,@cd_name,@release_date,@genre_id,@status_id,@typeid)
 	END TRY
 	BEGIN CATCH
 		PRINT 'An error occured.';
@@ -503,11 +504,11 @@ GO
 DROP PROCEDURE IF EXISTS sp_upd_CD;
 go
 CREATE PROCEDURE sp_upd_CD
-	@cd_id int, @cd_name varchar(60), @release_date date, @genre_id int, @status_id int, @type_id int
+	@cd_id int, @cd_name varchar(60), @release_date date, @genre_id int, @status_id int, @typeid int
 AS
 	BEGIN TRY
 		UPDATE [dbo].[CD]
-		   SET [CD_ID] = @cd_id,[CD_name] = @cd_name,[Release_Date] = @release_date,[Genre_ID] = @genre_id,[Status_ID] = @status_id,[TypeID] = @type_id
+		   SET [CD_ID] = @cd_id,[CD_name] = @cd_name,[Release_Date] = @release_date,[Genre_ID] = @genre_id,[Status_ID] = @status_id,[TypeID] = @typeid
 		 WHERE cd_id = @cd_id
 	END TRY
 	BEGIN CATCH
