@@ -77,7 +77,6 @@
                     </td>
                     <td>
                         <asp:TextBox ID="lnameTextBox" runat="server" Text='<%# Bind("lname") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required" ControlToValidate="lnameTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Artist_Type_IDTextBox" runat="server" Text='<%# Bind("Artist_Type_ID") %>' />
