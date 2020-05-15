@@ -1,4 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DiskInv.SiteMaster" %>
+﻿<%-- *************************************************************************** --%>
+<%-- Date	    Name	   Description                                           --%>
+<%-- --------------------------------------------------------------------------- --%>
+<%-- 5/14/2020  Eric       Changed background and nav colors                     --%>
+<%-- *************************************************************************** --%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DiskInv.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -15,7 +20,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body style="background-color: rgba(120, 66, 167, 0.96);">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -37,7 +42,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #57c495;">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,20 +50,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">CD Maintenance</a>
+                    <a class="navbar-brand" runat="server" href="~/" style="color: white;">CD Maintenance</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Artists">Artists</a></li>
-                        <li><a runat="server" href="~/Borrowers">Borrowers</a></li>
-                        <li><a runat="server" href="~/CDs">CDs</a></li>
+                        <li><a runat="server" href="~/" style="color: black;">Home</a></li>
+                        <li><a runat="server" href="~/Artists" style="color: black;">Artists</a></li>
+                        <li><a runat="server" href="~/Borrowers" style="color: black;">Borrowers</a></li>
+                        <li><a runat="server" href="~/CDs" style="color: black;">CDs</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                                <li><a runat="server" href="~/Account/Register" style="color: black;">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login" style="color: black;">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>

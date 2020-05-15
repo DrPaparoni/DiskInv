@@ -3,11 +3,11 @@
 <%-- --------------------------------------------------------------------------- --%>
 <%-- 4/27/2020  Eric       Initial deployment of Borrowers page.                 --%>
 <%-- 5/01/2020  Eric       Added update, ins, & del commands                     --%>
+<%-- 5/14/2020  Eric       Changed table stylings to match the rest of the site  --%>
 <%-- *************************************************************************** --%>
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Borrowers.aspx.cs" Inherits="DiskInv.Borrowers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Borrowers</h1>
-    <p>&nbsp;</p>
     <p>
         <asp:ListView ID="ListView1" runat="server" DataKeyNames="Borrower_ID" DataSourceID="SqlDataSource1" InsertItemPosition="LastItem">
             <AlternatingItemTemplate>
@@ -31,9 +31,9 @@
                 </tr>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <tr style="background-color: #999999;">
+                <tr style="background-color: #999999; color: black;">
                     <td>
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" ValidationGroup="Edit" />
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                     </td>
                     <td>
@@ -41,15 +41,12 @@
                     </td>
                     <td>
                         <asp:TextBox ID="lnameTextBox" runat="server" Text='<%# Bind("lname") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="lnameTextBox" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="fnameTextBox" runat="server" Text='<%# Bind("fname") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required" ControlToValidate="fnameTextBox" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Borrower_Phone_NumberTextBox" runat="server" Text='<%# Bind("Borrower_Phone_Number") %>' />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Borrower_Phone_NumberTextBox" Display="Dynamic" ErrorMessage="Use this format xxx-xxx-xxxx" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
             </EditItemTemplate>
@@ -63,25 +60,21 @@
             <InsertItemTemplate>
                 <tr style="">
                     <td>
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" ValidationGroup="Insert"/>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert"/>
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                     </td>
                     <td>
                         <asp:TextBox ID="Borrower_IDTextBox" runat="server" Text='<%# Bind("Borrower_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="Borrower_IDTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="lnameTextBox" runat="server" Text='<%# Bind("lname") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="lnameTextBox" ValidationGroup="Insert" Display="Dynamic" ErrorMessage="Required"></asp:RequiredFieldValidator>
 
                     </td>
                     <td>
                         <asp:TextBox ID="fnameTextBox" runat="server" Text='<%# Bind("fname") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="fnameTextBox" Display="Dynamic" ErrorMessage="Required" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Borrower_Phone_NumberTextBox" runat="server" Text='<%# Bind("Borrower_Phone_Number") %>' />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="Borrower_Phone_NumberTextBox" Display="Dynamic" ErrorMessage="Use this format xxx-xxx-xxxx" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
             </InsertItemTemplate>
@@ -126,7 +119,9 @@
                         <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: black">
                             <asp:DataPager ID="DataPager1" runat="server">
                                 <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                 </Fields>
                             </asp:DataPager>
                         </td>

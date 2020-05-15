@@ -3,18 +3,16 @@
 <%-- --------------------------------------------------------------------------- --%>
 <%-- 4/27/2020  Eric       Initial deployment of CDs page.                       --%>
 <%-- 5/01/2020  Eric       Added ListView to add, upd & del disks.               --%>
+<%-- 5/14/2020  Eric       Changed table stylings to match the rest of the site  --%>
 <%-- *************************************************************************** --%>
 <%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CDs.aspx.cs" Inherits="DiskInv.CDs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <H1>
-        <br />
         CDs</H1>
-    <p>
-        &nbsp;</p>
 <p>
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" DataKeyNames="CD_ID" InsertItemPosition="LastItem">
             <AlternatingItemTemplate>
-                <tr style="background-color:#FFF8DC;">
+                <tr style="background-color:#FFFFFF; color: #284775;">
                     <td>
                         <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                         <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -35,14 +33,14 @@
                         <asp:Label ID="Genre_IDLabel" runat="server" Text='<%# Eval("Genre_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="TypeIDLabel" runat="server" Text='<%# Eval("TypeID") %>' />
+                        <asp:Label ID="typeIDLabel" runat="server" Text='<%# Eval("typeID") %>' />
                     </td>
                 </tr>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <tr style="background-color:#008A8C;color: #b200ff;">
+                <tr style="background-color:#999999;">
                     <td>
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" ValidationGroup="Edit"/>
+                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update"/>
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                     </td>
                     <td>
@@ -50,23 +48,18 @@
                     </td>
                     <td>
                         <asp:TextBox ID="CD_nameTextBox" runat="server" Text='<%# Bind("CD_name") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CD_nameTextBox" ErrorMessage="Required" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Release_DateTextBox" runat="server" Text='<%# Bind("Release_Date") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Release_DateTextBox" ErrorMessage="Required" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Status_IDTextBox" runat="server" Text='<%# Bind("Status_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Status_IDTextBox" ErrorMessage="Required" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Genre_IDTextBox" runat="server" Text='<%# Bind("Genre_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="Genre_IDTextBox" ErrorMessage="Required" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="TypeIDTextBox" runat="server" Text='<%# Bind("TypeID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TypeIDTextBox" ErrorMessage="Required" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="typeIDTextBox" runat="server" Text='<%# Bind("typeID") %>' />
                     </td>
                 </tr>
             </EditItemTemplate>
@@ -80,37 +73,31 @@
             <InsertItemTemplate>
                 <tr style="">
                     <td>
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" ValidationGroup="Insert"/>
+                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert"/>
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                     </td>
                     <td>
                         <asp:TextBox ID="CD_IDTextBox" runat="server" Text='<%# Bind("CD_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Required" ControlToValidate="CD_IDTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="CD_nameTextBox" runat="server" Text='<%# Bind("CD_name") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Required" ControlToValidate="CD_nameTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Release_DateTextBox" runat="server" Text='<%# Bind("Release_Date") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Required" ControlToValidate="Release_DateTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Status_IDTextBox" runat="server" Text='<%# Bind("Status_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Required" ControlToValidate="Status_IDTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:TextBox ID="Genre_IDTextBox" runat="server" Text='<%# Bind("Genre_ID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Required" ControlToValidate="Genre_IDTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                     </td>
                     <td>
-                        <asp:TextBox ID="TypeIDTextBox" runat="server" Text='<%# Bind("TypeID") %>' />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Required" ControlToValidate="TypeIDTextBox" ValidationGroup="Insert"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="typeIDTextBox" runat="server" Text='<%# Bind("typeID") %>' />
                     </td>
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
-                <tr style="background-color:#DCDCDC;color: #000000;">
+                <tr style="background-color:#E0FFFF; color: #333333;">
                     <td>
                         <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                         <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -131,7 +118,7 @@
                         <asp:Label ID="Genre_IDLabel" runat="server" Text='<%# Eval("Genre_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="TypeIDLabel" runat="server" Text='<%# Eval("TypeID") %>' />
+                        <asp:Label ID="typeIDLabel" runat="server" Text='<%# Eval("typeID") %>' />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -140,14 +127,14 @@
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                <tr runat="server" style="background-color:#DCDCDC;color: black;">
+                                <tr runat="server" style="background-color:#E0FFFF; color: #333333;">
                                     <th runat="server"></th>
                                     <th runat="server">CD_ID</th>
                                     <th runat="server">CD_name</th>
                                     <th runat="server">Release_Date</th>
                                     <th runat="server">Status_ID</th>
                                     <th runat="server">Genre_ID</th>
-                                    <th runat="server">TypeID</th>
+                                    <th runat="server">typeID</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -155,10 +142,12 @@
                         </td>
                     </tr>
                     <tr runat="server">
-                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                        <td runat="server" style="text-align: center;background-color: #5D7B9D; font-family: Verdana, Arial, Helvetica, sans-serif;color: black;">
                             <asp:DataPager ID="DataPager1" runat="server">
                                 <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
+                                    <asp:NumericPagerField />
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" />
                                 </Fields>
                             </asp:DataPager>
                         </td>
@@ -166,7 +155,7 @@
                 </table>
             </LayoutTemplate>
             <SelectedItemTemplate>
-                <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
+                <tr style="background-color:#E2DED6; font-weight: bold;color: #333333;">
                     <td>
                         <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                         <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
@@ -187,7 +176,7 @@
                         <asp:Label ID="Genre_IDLabel" runat="server" Text='<%# Eval("Genre_ID") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="TypeIDLabel" runat="server" Text='<%# Eval("TypeID") %>' />
+                        <asp:Label ID="typeIDLabel" runat="server" Text='<%# Eval("typeID") %>' />
                     </td>
                 </tr>
             </SelectedItemTemplate>
